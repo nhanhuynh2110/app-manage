@@ -1,0 +1,6 @@
+/server/node_modules
+/server/package-lock.json
+/serverManagerAccount/node_modules
+/serverManagerAccount/package-lock.json
+/serverManagerSevice/node_modules
+/serverManagerSevice/package-lock.json
