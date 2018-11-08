@@ -2,7 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './app'
 
-import { CtxProvider } from './context'
+import { CtxProvider, setupAppControllerContext } from './context'
+import Controller from './controller'
 
-ReactDOM.render(<CtxProvider><App /></CtxProvider>, document.getElementById('app'))
+function startApp () {
+  let appCtrl = new Controller()
+  setupAppControllerContext(appCtrl)
+  appCtrl.runApplication(() => ReactDOM.render(<CtxProvider><App /></CtxProvider>, document.getElementById('app')))
+}
+startApp()
 

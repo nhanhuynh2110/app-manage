@@ -1,15 +1,24 @@
 import React from 'react'
-import { renderThemeConsumer, renderUserConsumer } from '../context'
+import { withConsumer, renderUserConsumer } from '../context'
 
 class Test extends React.PureComponent {
+  handleClick () {
+    this.props.store.fn.setCurrentNav((old) => {
+      old.push('huynh')
+      return old
+    })
+  }
   render () {
     return (
-      <div>user</div>
+      <React.Fragment>
+        <ul>{this.props.store.data.currentNav.map((e, key) => <li key={key}><a>{e}</a></li>)}</ul>
+        <div><button onClick={this.handleClick.bind(this)}>user</button></div>
+      </React.Fragment>
+
     )
   }
 }
 
-let User = renderThemeConsumer(Test, (store) => ({ theme: store.theme }))
-export default renderUserConsumer(User, (u) => ({
-  user: u
+export default withConsumer(Test, (store) => ({
+  store: store
 }))

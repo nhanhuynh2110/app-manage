@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
-import { renderThemeConsumer } from './context'
-import But from './component/button'
+import { withConsumer } from './context'
 import Test from './component/test'
 
 class App extends React.PureComponent {
@@ -32,6 +31,6 @@ class App extends React.PureComponent {
   }
 }
 
-export default renderThemeConsumer(App, (store) => ({
-  themes: store.theme
+export default withConsumer(App, (store) => ({
+  store: store
 }))
